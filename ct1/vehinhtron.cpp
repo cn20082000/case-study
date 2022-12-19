@@ -1,20 +1,20 @@
 #include<iostream>
 using namespace std;
 
-int toadox, toadoy, bankinhr;
-
+int coordinatesX, coordinatesY, radiusR;
 //Kiem tra vi tri diem so voi duong tron (trong/tren/ngoai duong tron)
 //Neu diem trong/tren duong tron thi tra ve true, ngoai duong tron thi tra ve false
-bool ktra_vi_tri_diem(int a, int b){
-	int tmp = (a-toadox)*(a-toadox) + (b-toadoy)*(b-toadoy) - bankinhr*bankinhr;
+bool checkPointPosition(int xCheck, int yCheck){
+	int tmp = (xCheck-coordinatesX)*(xCheck-coordinatesX) 
+			  + (yCheck-coordinatesY)*(yCheck-coordinatesY) - radiusR*radiusR;
 	if(tmp<=0) return true;
 	return false;	
 }
-
-void ve_hinh_tron(){
-	for(int i=0; i<= toadox + bankinhr; i++){
-		for(int j=0; j<= toadoy + bankinhr; j++){
-			if(ktra_vi_tri_diem(i,j)==true)	{
+//In ra cac diem trong va tren duong tron
+void drawCircle(){
+	for(int i=0; i<= coordinatesX + radiusR; i++){
+		for(int j=0; j<= coordinatesY + radiusR; j++){
+			if(checkPointPosition(i,j)==true)	{
 				cout<<"* ";
 			}
 			else{
@@ -24,9 +24,8 @@ void ve_hinh_tron(){
 		cout<<endl;
 	}	
 }
-
 //Neu chuoi nhap vao khong thuoc so nguyen thi tra ve -1, la so nguyen thi tra ve chinh no kieu int
-int chuyen_chuoi_thanh_so_nguyen(string s){
+int convertStringToInteger(string sConvert){
 	int tmp =0;
 	int i=0;
 	while(i<s.length()){
@@ -41,44 +40,38 @@ int chuyen_chuoi_thanh_so_nguyen(string s){
 	}
 	return tmp;
 }
-
 int main(){
-   string bankinh_nhap, toadox_nhap, toadoy_nhap;
-   
+   string coordinatesXInput, coordinatesYInput, radiusRInput;
    cout<<"nhap toa do tam va ban kinh hinh tron: "<<endl;
-   
    cout<<"toa do x: ";
-   cin>>toadox_nhap;
-
+   cin>>coordinatesXInput;
    cout<<"toa do y: ";
-   cin>>toadoy_nhap;
-
+   cin>>coordinatesYInput;
    cout<<"ban kinh r: ";
-   cin>>bankinh_nhap; 
-   
+   cin>>radiusRInput; 
    //chuyen du lieu nhap vao thanh kieu int
-   toadox = chuyen_chuoi_thanh_so_nguyen(toadox_nhap);
-   toadoy = chuyen_chuoi_thanh_so_nguyen(toadoy_nhap);
-   bankinhr = chuyen_chuoi_thanh_so_nguyen(bankinh_nhap);
-   
+   coordinatesX = convertStringToInteger(coordinatesX_nhap);
+   coordinatesY = convertStringToInteger(coordinatesY_nhap);
+   radiusR = convertStringToInteger(bankinh_nhap);  
    //kiem tra du lieu nhap vao co phai la so nguyen khong
-   if(toadox == -1 || toadoy == -1 || bankinhr == -1){
+   if(coordinatesX == -1 || coordinatesY == -1 || radiusR == -1){
    		cout<<"nhap vao khong hop le "<<endl;	
    		return 0;
-   }
-   
+   } 
    //kiem tra toa do, ban kinh nhap vao co hop le (r^2 < x^2, y^2)
-   if(toadox*toadox < bankinhr*bankinhr || toadoy*toadoy < bankinhr*bankinhr){
+   if(coordinatesX*coordinatesX < radiusR*radiusR || coordinatesY*coordinatesY < radiusR*radiusR){
    	 cout<<"toa do ban kinh khong hop le"<<endl;
    }
    else{
-   		ve_hinh_tron();
+   		drawCircle();
+   		
+   		//Hoi nguoi dung co muon thoat chuong trinh
    		cout<<"Thoat(Y)?"<<endl;
-   		char temp; cin>>temp;
+   		char temp; 
+		cin>>temp;
    		if(temp == 'Y'){
    			return 0;
 		}
-   }
-	
+   }	
    return 0;
 }

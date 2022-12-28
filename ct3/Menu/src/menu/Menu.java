@@ -25,12 +25,11 @@ public class Menu {
             System.out.println("7. sap xep theo nam");
             System.out.println("0. thoat");
             
-            int chon;
             Scanner sc = new Scanner(System.in);
-            chon = Integer.parseInt(sc.nextLine());
+            int chon = Integer.parseInt(sc.nextLine());
             switch (chon) {
                 case 0: System.out.println("BYE!!!");
-                        System.exit(0);
+                        break;
                 case 1: qlgt.nhapOto();
                         break;
                 case 2: qlgt.nhapXeMay();

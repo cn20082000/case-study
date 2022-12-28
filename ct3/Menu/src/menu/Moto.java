@@ -9,13 +9,13 @@ package menu;
  *
  * @author Admin
  */
-public class XeMay extends PTGT implements TinhGia{
+public class Moto extends PTGT {
     private double congsuat;
 
-    public XeMay() {
+    public Moto() {
     }
 
-    public XeMay(String ma, String hang, int nam, double gia, String mau,
+    public Moto(String ma, String hang, int nam, double gia, String mau,
             double congsuat) {
         super(ma, hang, nam, gia, mau);
         this.congsuat = congsuat;
@@ -29,6 +29,7 @@ public class XeMay extends PTGT implements TinhGia{
         this.congsuat = congsuat;
     }
     
+    @Override
     public double getGia () {
         if ((2022 - super.getNam()) >= 2){
             return super.getGia() * 0.95;

@@ -12,7 +12,8 @@ import javax.swing.text.html.parser.DTDConstants;
  * @author Admin
  */
 public class PTGT implements Comparable<PTGT> {
-    private String ma, hang;
+    private String ma;
+    private String hang;
     private int nam;
     private double gia;
     private String mau;

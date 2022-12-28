@@ -9,14 +9,14 @@ package menu;
  *
  * @author Admin
  */
-public class Oto extends PTGT implements TinhGia {
+public class Car extends PTGT {
     private String kieu;
     private int socho;
 
-    public Oto() {
+    public Car() {
     }
 
-    public Oto (String ma, String hang, int nam, double gia, String mau,
+    public Car (String ma, String hang, int nam, double gia, String mau,
             String kieu, int socho) {
         super(ma, hang, nam, gia, mau);
         this.kieu = kieu;
@@ -39,6 +39,7 @@ public class Oto extends PTGT implements TinhGia {
         this.socho = socho;
     }
 
+    @Override
     public double getGia () {
         if ((2022 - super.getNam()) >= 2){
             return super.getGia() * 0.85;

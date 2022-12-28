@@ -15,17 +15,15 @@ import java.util.Scanner;
  *
  * @author Admin
  */
-public class QLGT implements ChucNang {
-    private List<PTGT> list;
+public class QLGT {
+    private List<PTGT> list = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
-
-    public QLGT() {
-        list = new ArrayList<>();
-    }
+    
     private int tonTai (String ma) {
         for(int i = 0; i < list.size(); i++) {
-            if (list.get(i).getMa().equalsIgnoreCase(ma))
-                return i;
+            if (list.get(i).getMa().equalsIgnoreCase(ma)) {
+                return i;   
+            }
         }
         return -1;
     }
@@ -54,42 +52,42 @@ public class QLGT implements ChucNang {
         mau = sc.nextLine();
         return new PTGT(ma, hang, nam, gia, mau);
     }
-    @Override
+    
     public void nhapOto() {
         PTGT oto = nhap();
         System.out.println("nhap kieu: ");
         String kieu =  sc.nextLine();
         System.out.println("nhap so cho: ");
         int soCho = Integer.parseInt(sc.nextLine());
-        list.add(new Oto(oto.getMa(), oto.getHang(), oto.getNam(), oto.getGia(), 
+        list.add(new Car(oto.getMa(), oto.getHang(), oto.getNam(), oto.getGia(), 
                 oto.getMau(), kieu, soCho));
     }
 
-    @Override
+  
     public void nhapXeMay() {
         PTGT xeMay = nhap();
         System.out.println("nhap cong suat: ");
         double congSuat =  Double.parseDouble(sc.nextLine());
-        list.add(new XeMay(xeMay.getMa(), xeMay.getHang(), xeMay.getNam(), xeMay.getGia(), 
+        list.add(new Moto(xeMay.getMa(), xeMay.getHang(), xeMay.getNam(), xeMay.getGia(), 
                 xeMay.getMau(), congSuat));
     }
 
-    @Override
+
     public void xemDS() {
         System.out.println("Danh sach Oto: ");
         for (PTGT i:list)
-            if (i instanceof Oto) {
+            if (i instanceof Car) {
                 System.out.println(i);
             }
         
         System.out.println("Danh sach Xe may: ");
         for (PTGT i:list)
-            if (i instanceof XeMay) {
+            if (i instanceof Moto) {
                 System.out.println(i);
             }
     }
 
-    @Override
+
     public void xoa() {
         System.out.println("nhap ma can xoa: ");
         String ma = sc.nextLine();
@@ -102,7 +100,7 @@ public class QLGT implements ChucNang {
         }
     }
 
-    @Override
+
     public void sua() {
         System.out.println("nhap ma can sua: ");
         String ma = sc.nextLine();
@@ -127,7 +125,7 @@ public class QLGT implements ChucNang {
         }
     }
 
-    @Override
+
     public void timTheoHang() {
         System.out.println("nhap hang can tim: ");
         String hang = sc.nextLine();
@@ -143,7 +141,7 @@ public class QLGT implements ChucNang {
         }
     }
 
-    @Override
+
     public void sapXepTheoNam() {
         Collections.sort(list);
     }
